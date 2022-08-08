@@ -1,5 +1,7 @@
 package com.br.dio.cloudparking.model;
 
+import com.br.dio.cloudparking.controller.dto.ParkingCreateDTO;
+
 import java.time.LocalDateTime;
 
 public class Parking {
@@ -20,6 +22,9 @@ public class Parking {
         this.state = state;
         this.model = model;
         this.color = color;
+    }
+    public Parking(){
+
     }
 
     public String getId() {
