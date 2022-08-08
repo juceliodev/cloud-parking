@@ -38,6 +38,7 @@ public class ParkingController {
     }
 
     @GetMapping("/{id}")
+    @ApiOperation("Find by Id")
     public ResponseEntity<ParkingDTO> findById(@PathVariable String id){
         Parking parkingList = parkingService.findById(id);
         ParkingDTO result = parkingMapper.toParkingDTO(parkingList);
@@ -45,10 +46,36 @@ public class ParkingController {
     }
 
     @PostMapping
+    @ApiOperation("Create parking")
     public ResponseEntity<ParkingDTO> create(@RequestBody ParkingCreateDTO parkingDTO){
         Parking parkingCreate = parkingMapper.toParkingCreate(parkingDTO);
         Parking parking = parkingService.create(parkingCreate);
         ParkingDTO result = parkingMapper.toParkingDTO(parking);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
+
+    @DeleteMapping("/{id}")
+    @ApiOperation("Delete By Id")
+    public ResponseEntity delete(@PathVariable String id){
+        Parking parkingList = parkingService.delete(id);
+        //metodo noContent igual a status 204
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    @ApiOperation("Create parking")
+    public ResponseEntity<ParkingDTO> udate(@PathVariable String id, @RequestBody ParkingCreateDTO parkingDTO){
+        Parking parkingCreate = parkingMapper.toParkingCreate(parkingDTO);
+        Parking parking = parkingService.update(id,parkingCreate);
+        ParkingDTO result = parkingMapper.toParkingDTO(parking);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    public ResponseEntity<ParkingDTO> exit(@PathVariable String id){
+        //implementar metodo no service
+        Parking parking = parkingService.exit(id);
+        return ResponseEntity.ok(parkingMapper.toParkingDTO(parking));
+    }
+
+
 }
