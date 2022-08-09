@@ -96,7 +96,7 @@ public class ParkingService {
         Parking parking = findById(id);
         parking.setExitDate(LocalDateTime.now());
         parking.setBill(ParkingCheckout.getBill(parking));
-        System.out.println(parking);
+
 
         //recuperar o estacionamento
         //atualizar data de saida
