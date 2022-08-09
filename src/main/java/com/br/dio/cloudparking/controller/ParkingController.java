@@ -58,19 +58,18 @@ public class ParkingController {
     @ApiOperation("Delete By Id")
     public ResponseEntity delete(@PathVariable String id){
         parkingService.delete(id);
-       // Parking parkingList = parkingService.delete(id);
-        //metodo noContent igual a status 204
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
     @ApiOperation("Update parking")
-    public ResponseEntity<ParkingDTO> udate(@PathVariable String id, @RequestBody ParkingCreateDTO parkingDTO){
+    public ResponseEntity<ParkingDTO> update(@PathVariable String id, @RequestBody ParkingCreateDTO parkingDTO){
         Parking parkingCreate = parkingMapper.toParkingCreate(parkingDTO);
         Parking parking = parkingService.update(id,parkingCreate);
         ParkingDTO result = parkingMapper.toParkingDTO(parking);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
 
     @PostMapping("/{id}")
     @ApiOperation("Ckeckout parking")

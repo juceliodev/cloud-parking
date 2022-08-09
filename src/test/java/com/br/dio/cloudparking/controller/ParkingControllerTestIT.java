@@ -29,7 +29,6 @@ class ParkingControllerTestIT {
     }
     @Test
     void whenCreatethenCheckedIsCreated() {
-
         ParkingDTO createparkingDTO = new ParkingDTO();
         createparkingDTO.setColor("AMARELO");
         createparkingDTO.setLicense("MSS-1823");
@@ -45,23 +44,17 @@ class ParkingControllerTestIT {
                 .statusCode(HttpStatus.CREATED.value())
                 .body("license", Matchers.equalTo("MSS-1823"));
 //                .body("color", Matchers.equalTo("AMARELO"));
-
     }
-
-
-
     @Test
     void WhenfindAllCheckResult() {
-
         RestAssured.given()
                 .when()
                 .get("/parking")
                 .then()
                 .statusCode(HttpStatus.OK.value())
-                .body("license[0]", Matchers.equalTo("SSA-1123"));
+                .body("license[0]", Matchers.equalTo("MSS-1823"));
                 //para printar no console o corpo com a resposta
                 //.extract().response().body().prettyPrint();
     }
-
 
 }
