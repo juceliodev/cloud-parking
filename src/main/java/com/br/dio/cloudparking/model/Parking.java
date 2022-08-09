@@ -2,10 +2,14 @@ package com.br.dio.cloudparking.model;
 
 import com.br.dio.cloudparking.controller.dto.ParkingCreateDTO;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+@Entity
 public class Parking {
 
+    @Id
     private String id;
     private String license;
     private String state;

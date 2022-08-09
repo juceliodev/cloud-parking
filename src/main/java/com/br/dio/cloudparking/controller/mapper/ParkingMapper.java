@@ -14,6 +14,7 @@ public class ParkingMapper {
 
     private static final ModelMapper MODEL_MAPPER = new ModelMapper();
 
+    //para execucao desta conversao esta sendo usada a dependecia do modelMapper
     public ParkingDTO toParkingDTO(Parking parking){
         return MODEL_MAPPER.map(parking, ParkingDTO.class);
     }
